@@ -2,9 +2,12 @@
 use prime_checker;
 
 pub fn try_prime_checker(){
-    // 2023-05-06 IST
-    // let something = prime_checker::description(true);
-    // println!("Return for `description()`:\t {}", something);
+    //! 2023-05-06 IST
+    //! 
+    //! ```
+    //! let something = prime_checker::description(true);
+    //! println!("Return for `description()`:\t {}", something);
+    //! ```
 
     let num: u64 = 16009;
     let mut check: bool;
@@ -31,6 +34,6 @@ pub fn try_prime_checker(){
     primes = prime_checker::find_primes_till(num);
     println!("Prime numbers till {num}: {primes:?}\n", num=num, primes=primes);
 
-    anti_primes = prime_checker::find_anti_primes_till(num);
-    println!("Anti-prime numbers till {}: {:?}\n", num, anti_primes)
+    // anti_primes = prime_checker::find_anti_primes_till(num);
+    // println!("Anti-prime numbers till {}: {:?}\n", num, anti_primes)
 }
