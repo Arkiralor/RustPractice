@@ -10,7 +10,7 @@ fn main() {
     // println!("The factorial of {} is:\t{}", num, fac);
 
     let _list: Vec<u64> = vec![1, 9, 9, 2, 0, 9, 2, 5];
-    let unique_elements = _list.unique();
+    let unique_elements: Vec<u64> = _list.unique();
     println!("{:?}", unique_elements);
 }
 
