@@ -10,7 +10,7 @@ pub fn factorial(num: u64) -> u64 {
     }
 }
 
-// This trait allows a collection of sequence of values check all unique elements.
+// This trait allows a collection or sequence of values check all unique elements.
 pub trait UniqueElements<T> {
     fn unique(&self) -> Vec<T>;
 }
