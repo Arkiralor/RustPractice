@@ -7,3 +7,4 @@ edition = "2021"
 
 [dependencies]
 prime-checker = "0.2.12"
+valgrind = "0.1.2"
