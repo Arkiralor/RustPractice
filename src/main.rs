@@ -10,7 +10,7 @@ fn main() {
     // let fac: u64 = libs::dsa::recursion::factorial(num);
     // println!("The factorial of {} is:\t{}", num, fac);
 
-    // // let _list: Vec<u64> = vec![1, 9, 9, 2, 0, 9, 2, 5];
+    // let _list: Vec<u64> = vec![1, 9, 9, 2, 0, 9, 2, 5];
     // let _list: Vec<u64> = vec![1, 1, 2, 3, 5, 8, 1, 3, 2, 1];
     // let unique_elements: Vec<u64> = _list.unique();
     // println!("The unique elements in {:?} are: {:?}", _list, unique_elements);
@@ -25,7 +25,7 @@ fn main() {
     list.push_back(23);
     // list.print_values();
     list.pop_back();
-    list.pop_front();
+    // list.pop_front();
     list.print_values();
 }
 

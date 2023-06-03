@@ -1,3 +1,5 @@
+use std::mem;
+
 #[derive(Debug)]
 pub struct Node<T> {
     value: T,
@@ -67,8 +69,8 @@ impl<T: std::fmt::Debug> DoubleLinkedList<T> {
     }
 
     /// Remove and return the value from the front of the linked list
-    pub fn pop_front(&mut self) -> Option<T> {
-        self.head.take().map(|mut node| {
+    pub fn pop_front(&mut self) {
+        if let Some(mut node) = self.head.take() {
             self.head = node.next.take();
     
             if let Some(next_node) = &mut node.next {
@@ -76,30 +78,27 @@ impl<T: std::fmt::Debug> DoubleLinkedList<T> {
             } else {
                 self.tail = None;
             }
-    
-            let value: T = node.value; // Fix: Extract the value correctly
-            value
-        })
+        }
     }
 
     /// Remove and return the value from the back of the linked list
-    pub fn pop_back(&mut self) -> Option<T> {
-        self.tail.take().map(|raw_node| {
-            unsafe {
-                let node = Box::from_raw(raw_node);
-
-                if let Some(prev_node) = node.prev {
-                    (*prev_node).next = None;
-                    self.tail = Some(prev_node);
-                } else {
-                    self.head = None;
-                    self.tail = None;
-                }
-
-                node.value
+    pub fn pop_back(&mut self) {
+        if let Some(node_ptr) = self.tail.take() {
+            let node = unsafe { Box::from_raw(node_ptr) };
+    
+            if let Some(prev_node_ptr) = node.prev {
+                unsafe { (*prev_node_ptr).next = None };
+                self.tail = Some(prev_node_ptr);
+            } else {
+                self.head = None;
+                self.tail = None;
             }
-        })
+    
+            // Deallocate memory by dropping the Box
+            drop(node);
+        }
     }
+    
 
     /// Check if the linked list is empty
     pub fn is_empty(&self) -> bool {
