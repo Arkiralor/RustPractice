@@ -72,7 +72,7 @@ impl<T: std::fmt::Debug> DoubleLinkedList<T> {
     pub fn pop_front(&mut self) {
         if let Some(mut node) = self.head.take() {
             self.head = node.next.take();
-    
+
             if let Some(next_node) = &mut node.next {
                 next_node.prev = node.prev;
             } else {
@@ -85,7 +85,7 @@ impl<T: std::fmt::Debug> DoubleLinkedList<T> {
     pub fn pop_back(&mut self) {
         if let Some(node_ptr) = self.tail.take() {
             let node = unsafe { Box::from_raw(node_ptr) };
-    
+
             if let Some(prev_node_ptr) = node.prev {
                 unsafe { (*prev_node_ptr).next = None };
                 self.tail = Some(prev_node_ptr);
@@ -93,12 +93,11 @@ impl<T: std::fmt::Debug> DoubleLinkedList<T> {
                 self.head = None;
                 self.tail = None;
             }
-    
+
             // Deallocate memory by dropping the Box
             drop(node);
         }
     }
-    
 
     /// Check if the linked list is empty
     pub fn is_empty(&self) -> bool {

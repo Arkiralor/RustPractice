@@ -1,6 +1,5 @@
 use std::collections::HashSet;
 
-
 /// This trait allows a collection or sequence of values check all unique elements.
 pub trait UniqueElements<T> {
     fn unique(&self) -> Vec<T>;

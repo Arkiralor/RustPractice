@@ -1,7 +1,7 @@
 #![allow(warnings)]
 
-use libs::dsa::traits::UniqueElements;
 use libs::dsa::linked_list::DoubleLinkedList;
+use libs::dsa::traits::UniqueElements;
 mod libs;
 
 fn main() {
@@ -28,4 +28,3 @@ fn main() {
     // list.pop_front();
     list.print_values();
 }
-
