@@ -9,7 +9,7 @@ pub fn try_prime_checker() {
     //! println!("Return for `description()`:\t {}", something);
     //! ```
 
-    let num: u64 = 16009;
+    let num: u64 = 257;
     let mut check: bool;
     let mut factors: Vec<u64>;
     let primes: Vec<u64>;
