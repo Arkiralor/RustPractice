@@ -2,16 +2,35 @@
 //!
 
 use crate::libs::structures::schema::User;
+use crate::libs::constants::HIDDEN_VALUE;
 use std::fmt;
 
 impl fmt::Display for User {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        write!(f, "{{ \"id\": \"{id}\", \"username\": \"{username}\", \"email\": \"{email}\", \"dateOfBirth\": \"{date_of_birth}\" , \"gender\": \"{gender}\" }}" , id=self.id, username=self.username, email=self.email, date_of_birth=self.date_of_birth, gender=self.gender)
+        write!(
+            f, 
+            "User<{id}>{{`username`= {username}, `email`= {email}, `password`= {val}, `date_of_birth`= {date_of_birth} , `gender`= {gender}}}" , 
+            id=self.id, 
+            username=self.username, 
+            email=self.email, 
+            val = HIDDEN_VALUE,
+            date_of_birth=self.date_of_birth, 
+            gender=self.gender
+        )
     }
 }
 
 impl fmt::Debug for User {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        write!(f, "{{ \"id\": \"{id}\", \"username\": \"{username}\", \"email\": \"{email}\", \"dateOfBirth\": \"{date_of_birth}\" , \"gender\": \"{gender}\" }}" , id=self.id, username=self.username, email=self.email, date_of_birth=self.date_of_birth, gender=self.gender)
+        write!(
+            f, 
+            "User<{id}>{{`username`= {username}, `email`= {email}, `password`= {val}, `date_of_birth`= {date_of_birth} , `gender`= {gender}}}" , 
+            id=self.id, 
+            username=self.username, 
+            email=self.email, 
+            val = HIDDEN_VALUE,
+            date_of_birth=self.date_of_birth, 
+            gender=self.gender
+        )
     }
 }

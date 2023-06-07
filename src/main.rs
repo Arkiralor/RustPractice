@@ -5,6 +5,8 @@ use libs::dsa::linked_list::DoubleLinkedList;
 use libs::dsa::traits::UniqueElements;
 use libs::structures::schema::User;
 
+use titlecase::titlecase;
+
 mod libs;
 
 fn main() {
@@ -35,15 +37,30 @@ fn main() {
     // // list.pop_front();
     // list.print_values();
 
+    let username: &str = "arkiralor";
+    let email: &str = "arkiralor@gmail.com";
+    let password: &str = "RandomPa$$word123";
+    let incorrect_password: &str = "IncorrectPa$$word@123";
+    let date_of_birth: &str = "1992-09-25";
+    let gender: &str = "male";
+
     let user = User::create(
-        Some("arkiralor"),
-        Some("arkiralor@gmail.com"),
-        // Some("RandomPa$$word123"),
-        None,
-        Some("1992-09-25"),
-        Some("Male"),
+        Some(username),
+        Some(email),
+        Some(password),
+        Some(date_of_birth),
+        Some(titlecase(gender).as_str()),
     );
-    user.display();
-    println!("Serialized: {}", user.serialize());
-    println!("Age: {}", user.age())
+    // println!("{}", user);
+    println!("User (serialized):\t{}", user.serialize());
+    println!("Age:\t{:?} years", user.age());
+
+    println!(
+        "Password Verification (TRUE): {}",
+        user.verify_password(password)
+    );
+    println!(
+        "Password Verification (FALSE): {}",
+        user.verify_password(incorrect_password)
+    );
 }
