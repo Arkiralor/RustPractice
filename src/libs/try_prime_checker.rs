@@ -15,7 +15,7 @@ pub fn try_prime_checker() {
     let primes: Vec<u64>;
     let anti_primes: Vec<u64>;
 
-    (check, factors) = prime_checker::check_if_anti_prime(num);
+    (check, factors) = prime_checker::is_hcn(num);
     if check == true {
         println!("\n{} is an anti-prime number.\n", num);
     } else {
@@ -25,7 +25,7 @@ pub fn try_prime_checker() {
         );
     }
 
-    (check, factors) = prime_checker::check_if_prime(num);
+    (check, factors) = prime_checker::is_prime(num);
     if check == true {
         println!("{} is a prime number.\n", num);
     } else {
@@ -35,7 +35,7 @@ pub fn try_prime_checker() {
         );
     }
 
-    primes = prime_checker::find_primes_till(num);
+    primes = prime_checker::get_primes(num);
     println!(
         "Prime numbers till {num}: {primes:?}\n",
         num = num,

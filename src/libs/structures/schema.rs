@@ -77,12 +77,12 @@ impl User {
 
         let username: String = match u {
             Some(val) => val.to_string(),
-            None => DEFAULT_USERNAME.to_string(),
+            None => panic!("`username` is a mandatory field."),
         };
 
         let email: String = match e {
             Some(val) => val.to_string(),
-            None => DEFAULT_EMAIL.to_string(),
+            None => panic!("`email` is a mandatory field."),
         };
 
         let password: String = match p {
